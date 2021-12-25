@@ -1,0 +1,41 @@
+#include <stdio.h>
+#define MAX 100
+int main(){
+    int a[MAX][MAX];
+    //matrica
+    int n, max, min, x;
+    printf("Kolku redici i koloni kje ima:");
+    scanf("%d", &n);
+    //vnesuvanje na matrica
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j ++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+    max = min = a[0][0];
+     for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(a[i][j] > max)
+                max = a[i][j];
+            if(a[i][j] < min)
+                min = a[i][j];
+            }
+        }
+    x = max - min;
+    //zamena vo novata matrica
+     for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+                if(j == i){
+                    a[i][j] = x;
+                }
+        }
+     }
+    //pechati nova matrica
+     for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j ++){
+            printf("%d\t", a[i][j]);
+        }
+        printf("\n");
+    }
+return 0;
+}

@@ -1,0 +1,60 @@
+/*site elementi shto imaat vrednost 0 treba da se smesti brojot na elementi so vrednost 1 okolu 
+toj elemen vo site osum nasoki*/
+#include <stdio.h>
+#define MAX 100
+int main(){
+    int a[MAX][MAX];
+    char nova[MAX][MAX];
+    //matrica
+    int m, n, br = 0;
+    printf("Kolku redici i koloni kje ima:");
+    scanf("%d %d", &m, &n);
+    //ramka od -1
+    for(int i = 0; i < m+2; i++){
+        for(int j = 0; j < n+2; j++){
+            a[i][j] = -1;
+        }
+    }
+    //vnesuvanje na matrica
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= n; j ++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+    //vlijae samo na vnatreshnata matrica bez ramkata
+    for(int i = 1; i <= m; i++){
+        for(int j = 1; j <= n; j ++){
+            if(a[i][j] == 0){
+                //prethoden red
+                if(a[i-1][j-1] == 1) br++;
+                if(a[i-1][j] == 1) br++;
+                if(a[i-1][j+1] == 1) br++;
+                //segashen red
+                if(a[i][j+1] == 1) br++;
+                if(a[i][j-1] == 1) br++;
+                //sleden red
+                if(a[i+1][j-1] == 1) br++;
+                if(a[i+1][j] == 1) br++;
+                if(a[i+1][j+1] == 1) br++;
+
+            nova[i][j] = br+48; // pretvoranje na brojot vo negoviot ascii kod +48 go oznachuva brojot 0
+            br = 0;
+            }
+            else{
+            nova[i][j] = '*';
+            }
+        }
+    }
+//printanje na nova
+  for(int i = 1; i < m+1; i++){
+        for(int j = 1; j < n+1; j++){
+            printf("%c ", nova[i][j]);
+        }
+        printf("\n");
+    }
+
+
+
+
+return 0;
+}

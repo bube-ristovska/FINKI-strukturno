@@ -1,0 +1,44 @@
+#include <stdio.h>
+#define MAX 100
+int main(){
+   int n, a[MAX][MAX];
+   int region1=0, region2=0, region3=0, region4;
+   scanf("%d", &n);
+   for(int i = 0; i < n; i++){
+    for(int j = 0; j < n; j++){
+        scanf("%d", &a[i][j]);
+    }
+   }
+   //region1
+   for(int i = 0; i < n/2; i++){
+    for(int j = 0; j < n/2; j++){
+        region1+=a[i][j];
+    }
+   }
+   //region2
+   for(int i = 0; i < n/2; i++){
+    for(int j = n/2+1; j < n; j++){
+        region2+=a[i][j];
+    }
+   }
+   //region3
+   for(int i = n/2+1; i < n; i++){
+    for(int j = 0; j < n/2; j++){
+        region3+=a[i][j];
+    }
+   }
+   //region 4
+   for(int i = n/2+1; i < n; i++){
+    for(int j = n/2+1; j < n; j++){
+        region4+=a[i][j];
+    }
+   }
+   int nova[2][2] = {{region1, region2}, {region3,region4}};
+   for(int i = 0; i < 2; i++){
+    for(int j = 0; j < 2; j++){
+        printf("%d ", nova[i][j]);
+    }
+    printf("\n");
+   }
+return 0;
+}

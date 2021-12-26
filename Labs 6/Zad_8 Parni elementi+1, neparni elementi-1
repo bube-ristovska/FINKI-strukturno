@@ -1,0 +1,19 @@
+#include <stdio.h>
+#define MAX 100
+int main(){
+    int n, a[MAX];
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &a[i]);
+        if(a[i]%2){ //neparnite elementi da se namalat za 1
+            a[i] = a[i] - 1;
+        }
+        else{ // parnite elementi da se zgolemat za 1
+            a[i] = a[i]+1;
+        }
+    }
+    for(int i = 0; i < n; i++){
+        printf("%d ", a[i]);
+    }
+return 0;
+}

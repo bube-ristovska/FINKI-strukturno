@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define MAX 100
+int main(){
+    int n, k, temp, a[MAX];
+    scanf("%d",&n);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &a[i]);
+    }
+    scanf("%d", &k);
+    for(int j = 0; j < n; j++)  //da go sporeduva so site broevi
+    {
+        for(int i = 0; i < n - 1; i++) //za pretposledniot element zatoa n-1
+        {
+            if(a[i] >= k && a[i + 1] < k)
+            {
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+            }
+        }
+    }
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", a[i]);
+    }
+    return 0;
+}

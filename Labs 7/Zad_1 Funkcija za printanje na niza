@@ -1,0 +1,41 @@
+#include <stdio.h>
+#define MAX 100
+int n;//globalna promenliva
+
+void printArray(int array[])
+{
+    for(int i = 0; i < n; i++){
+        printf("%d ", array[i]);
+    }
+}
+int main(){
+    int a[MAX];
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &a[i]);
+    }
+    printArray(a); //normalno printanje
+    printf("\n");
+    for(int i = 0; i < n-n/2; i++){
+        int temp = a[i];
+        a[i] = a[n - i - 1];
+        a[n - i - 1] = temp;
+    }
+    printArray(a); //samata niza pretrpuva promeni i samo ja printash naopaku
+    for(int i = 1; i < n; i++){
+        for(int j = i; j < (n - 1); j++){
+            a[j] = a[j + 1];
+        }
+        n--; 
+    }
+    printf("\n");
+    printArray(a);
+    for(int i = 0; i < n-n/2; i++){
+        int temp = a[i];
+        a[i] = a[n - i - 1];
+        a[n - i - 1] = temp;
+    }
+    printf("\n");
+    printArray(a);
+    return 0;
+}

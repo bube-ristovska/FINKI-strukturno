@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int zbir(int n);
+int faktoriel(int n);
+//zbir na faktorielite od 1 do zbirot na samiot k
+int main(){
+    int k, rez=0;
+    scanf("%d", &k);
+    for(int i = 1; i <= k; i++){
+        rez+= faktoriel(zbir(i));
+    }
+    printf("Rezultatot e %d", rez);
+return 0;
+}
+int zbir(int n){ //zbir na broevite od 1 do n fakticki n se samite broevi 1, 2, 3...i
+    int s = 0;
+    for(int i = 1; i <= n; i++){
+        s+= i;
+    }
+  return s;
+}
+int faktoriel(int n){ //funkcija za faktoriel
+  int f = 1;
+  for(int i = 1; i <= n; i++){
+        f*=i;
+    }
+    return f;
+}

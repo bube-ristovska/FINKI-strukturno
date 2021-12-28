@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int kub(int n){
+    return n*n*n;
+}
+int main(){
+  int m;
+  scanf("%d", &m);
+  printf("%d", kub(m));
+
+return 0;
+}

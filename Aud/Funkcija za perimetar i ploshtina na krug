@@ -1,0 +1,18 @@
+#include <stdio.h>
+#define PI 3.14
+double dijametar(float r){
+    return r*2;
+}
+double perimetar(float r){
+    return 2*PI*r;
+}
+double ploshtina(float r){
+    return r*r*PI;
+}
+int main(){
+  float m;
+  scanf("%f", &m);
+  printf("%.2f\n%.2f\n%.2f\n", dijametar(m), perimetar(m), ploshtina(m));
+
+return 0;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+//funkcija za prost
+int prost(int n){
+    for(int i = 2; i < n; i++){ //pochnuva so deliteli od 2
+        if(n % i == 0){
+            return 0; //ako ima povekje deliteli vrakja 0 znachi ne nashol prost
+        }
+    }
+    return 1; //ako vrati 1 znachi nashol
+}
+//funkcija za prv pogolem prost
+int prv_pogolem_prost(int n){
+    n++;
+    while(prost(n) == 0){ //vrakja 1 dokolku go najde brojot i izlaga od while
+        n++; //ako ne najde ushte go zgolemuva n
+    }
+    return n;
+}
+
+int main(){
+    int m, pogolemProst;
+    scanf("%d", &m);
+    pogolemProst = prv_pogolem_prost(m);
+    printf("%d - %d = %d\n", pogolemProst, m, pogolemProst-m);
+return 0;
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+//zbir na cifri na broj
+int prost(int n){
+    for(int i = 2; i < n; i++){
+        if(n % i == 0){
+            return 0; //ne e prost
+        }
+    }
+return 1; //e prost
+}
+//prosti broevi shto se razlikuvaat za 2
+int main(){
+    int br = 0;
+        for(int j = 2; j < 1000; j++)
+        {
+          if(prost(j) && prost(j+2)){
+            printf("%d i %d\n", j, j+2);
+            br++;
+        }
+    }
+    printf("Vkupno %d takvi broevi", br);
+return 0;
+}

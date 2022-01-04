@@ -1,0 +1,13 @@
+#include <stdio.h>
+int zbirCifri(int n){
+    if(n == 0) return 0;
+    else
+        return n%10 + zbirCifri(n/10);
+}
+//se dodeka brojot ne e 0 sobiraj gi cifrite i cepkaj go so 10
+int main(){
+     int n;
+     scanf("%d", &n);
+     printf("%d",zbirCifri(n));
+    return 0;
+}

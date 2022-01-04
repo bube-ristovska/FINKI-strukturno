@@ -1,0 +1,19 @@
+#include <stdio.h>
+int osmiciBroj(int n){
+    if(n == 0)
+        return 0;
+    if(n / 10% 10 == 8 && n % 10 == 8)
+        return 2 + osmiciBroj(n/10); //dve osmici edna do dr
+    if(n % 10 == 8)
+        return 1 + osmiciBroj(n/10); //edna osmica samo
+    return osmiciBroj(n / 10); //cifrata ne e 8ca
+}
+/*count8(8) -> 1
+count8(818) -> 2
+count8(8818) -> 4 */
+int main(){
+     int n;
+     scanf("%d", &n);
+     printf("%d",osmiciBroj(n));
+    return 0;
+}

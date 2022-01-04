@@ -1,0 +1,24 @@
+#include <stdio.h>
+int zbir(int n){
+    if (n == 0) return 0;
+    else
+        return n + zbir(n-1); //zbir na brojot i shto e samiot n vo ovaa pozicija
+
+}
+int faktoriel(int n){
+    if(n == 0) return 1;
+    else
+        return n * faktoriel(n-1); //faktoriel na bilo koj broj shto vo sluchajov e zbirot
+}
+
+int main()
+{
+ int rez = 0, n;
+ scanf("%d", &n);
+for (int i = 1; i <=n; i++){
+        rez+= faktoriel(zbir(i)); //faktoriel na zbirot
+    }
+
+ printf("%d", rez);
+    return 0;
+}

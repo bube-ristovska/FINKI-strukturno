@@ -1,0 +1,30 @@
+#include <stdio.h>
+#define MAX 100
+int NZS(int m, int n){
+    static int temp = 1; //nzs na pochetokot se pretpostavuva deka e 1
+    if(temp%m == 0 && temp%n == 0) //samiot NZS treba da im e deliv so broevite
+        return temp;
+    else{
+        temp++; //se zgolemuva se dodeka ne dojde do baranata vrednost
+        NZS(m, n); //nzs povtorno se bara
+    }
+    return temp;
+
+}
+
+int main(){
+     int niza[MAX];
+     int n;
+     scanf("%d", &n);
+     for(int i = 0; i < n; i++){
+        scanf("%d", &niza[i]);
+     }
+
+     int nzs = NZS(niza[0], niza[1]); //se bara nzd na prvite dva elem
+
+     for(int i = 0; i < n; i++){
+        nzs = NZS(nzs, niza[i]); //nzd na prvite dva e m argumentot a sledniot elem. e m
+     }
+     printf("%d", nzs);
+    return 0;
+}

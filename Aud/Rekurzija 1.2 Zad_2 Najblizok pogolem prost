@@ -1,0 +1,24 @@
+#include <stdio.h>
+int prost(int n, int i){ //i- mozhen delitel na brojot koj go razgleduvame
+    if(n < 4) return 1; // site broevi pred 4 se prosti
+    else if(n % 2 == 0) return 0; //ako e paren sigurno ne e prost
+    else if(n % i == 0) return 0; // ako se deli so tekovniot delitel znachi ne e prost
+    else if(i*i > n) return 1;
+    //ovie bea stop uslovi
+    else return prost(n, i+2); //ova e glavniot uslov
+}
+//pazi else if da se napishani ne samo if
+int najblizokPogolem(int n){
+    if(prost(n+1, 3)) return n+1; //prv mozhen delitel e 3
+    else
+        return najblizokPogolem(n+1);
+
+}
+//pazi plus 1 pishi sekade
+int main(){
+     int n, m;
+     scanf("%d", &n);
+     m = najblizokPogolem(n);
+     printf("%d", m-n);
+    return 0;
+}

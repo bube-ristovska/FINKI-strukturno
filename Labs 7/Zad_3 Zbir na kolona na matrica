@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define MAX 100
+
+void readMatrix(int a[100][100], int n, int m){
+//normalno se chita matrica samo shto ja pravi zamenata na vistinskata matrica
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+}
+int main() {
+    int m, n;
+    int s = 0, min, indeks;
+    int a[100][100];
+    scanf("%d %d", &n, &m);
+    readMatrix(a, n, m);
+
+   for(int i = 0; i < m; i++){ //odat do m shto e brojot na koloni
+        s = 0;
+        for(int j = 0; j < n; j++){ //odat do n shto e brojot na redici
+            s+= a[j][i];
+        }
+        if(!i){ //samo koga se naogja na a[0] e ova i odnosno i == 0
+            min = s; //prviot min e prvata kolona i ciklusot se izvrshuva samo 1
+            indeks = 0;
+        }
+        /* greshno e 
+            else if(s == min){
+            min = s;
+            indeks = i - 1;
+        } */
+        else if(s < min){
+           min = s;
+           indeks = i;
+        }
+
+
+    }
+    printf("%d",indeks);
+return 0;
+}

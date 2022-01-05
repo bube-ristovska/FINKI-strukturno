@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define MAX 100
+int obratenBroj (int broj){
+    int obraten = 0;
+    while(broj){ //obraten
+        obraten = obraten * 10 + broj%10;
+        broj/=10;
+    }
+    return obraten;
+}
+int sumaNaCifri (int broj){ //suma cifri
+    int suma = 0;
+    while(broj){
+        suma+= broj%10;
+        broj/=10;
+    }
+    return suma;
+}
+void pecatiVoInterval (int a, int b){ //printf void funkcija
+    for(int i = a; i < b; i++){
+        if((i + obratenBroj(i)) % sumaNaCifri(i+ obratenBroj(i)) == 0){ //chitaj uboo uslovi za da ne si TROSHISH VREME
+            printf("%d\n", i);
+        }
+    }
+
+}
+int main() {
+    int m, n;
+    scanf("%d %d", &m, &n);
+    pecatiVoInterval(m,n);
+    return 0;
+}

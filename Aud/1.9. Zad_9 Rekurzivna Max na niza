@@ -4,11 +4,10 @@ int maxNIZA(int array[], int n, int max){ //tri argumenti za pocheten max i max 
     if(n == 0){
        return max; //vrati go max koga kje stignesh do pochetok na nizata
     }
-    else{
-       if(max > array[n-1])
-       return max = maxNIZA(array, n-1, max); 
+    else if(max < array[n-1]){
+       return maxNIZA(array, n-1, array[n-1]);
     }
-
+    else return maxNIZA(array, n-1, max);
 }
 
 int main(){

@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define MAX 100
+int nizaZbir(int array[], int n){
+    if(n == 0){
+       return array[n]; //go vrakja prviot element shto e stop uslov
+    }
+    else{
+       return array[n] + nizaZbir(array, n-1); //pochnuva od posledniot elem + prethodniot
+    }
+
+}
+
+int main(){
+     int niza[MAX];
+     int n, m;
+     scanf("%d", &n);
+
+     for(int i = 0; i < n; i++){
+        scanf("%d", &niza[i]);
+     }
+
+     m = nizaZbir(niza, n-1); //posledniot element e so indeks n-1
+     printf("%d", m);
+
+
+    return 0;
+}

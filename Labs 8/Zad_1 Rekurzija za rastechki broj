@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int opagjackaFunkcija(int n){
+    if (n < 9) return 1; //dokolku stigne do prvata cifra znachi brojot e opagjacki
+    else if ((n/10)%10 > n%10){ //pochnuva od pozadi kon napred zatoa >
+       return opagjackaFunkcija(n/10); //rekurzija od brojot bez poslednata cifra
+    }
+    else return 0; //ne e opagjachki faktichki rastechki od pozadi
+
+}
+
+
+int main(){
+    int n, x;
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        scanf("%d", &x);
+        printf("%d\n", opagjackaFunkcija(x));
+    }
+
+    return 0;
+}

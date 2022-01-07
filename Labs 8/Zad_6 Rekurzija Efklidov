@@ -1,0 +1,10 @@
+#include <stdio.h>
+int NZD(int a, int b){
+    if (b == 0) return a;
+    else return NZD(b, a%b); //efklidov b stanuva a // a%b stanuva b
+}
+int main(){
+    int m, n;
+    scanf("%d %d", &m, &n);
+    printf("%d", NZD(m,n));
+}

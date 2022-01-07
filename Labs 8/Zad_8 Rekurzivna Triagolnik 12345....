@@ -1,0 +1,21 @@
+#include <stdio.h>
+int koloni(int i, int n){ //i ni e brojot od kaj shto se pochnuva da se broi i+1 se do n
+    if(i == n) return n; //koga i kje dojde do n treba da go ispechatime samiot n
+    else printf("%d ", i);
+    return koloni(i+1, n);
+
+}
+int triagolnik(int n){ //fakticki ova se redicite shto pechatat nov red
+    if(n == 0) return; //ni trebaat n do 1 redici znachi koga kje dojde do 0 prekinuva
+    else{
+        koloni(1, n+1); //dokolku sme na vtor red n vekje ni se namalilo za 2 ama treba da odi do tretoto
+       printf("\n");
+    }
+    return triagolnik(n-1); //rekurzivna za redicite
+
+}
+int main(){
+    int n;
+   scanf("%d", &n);
+   triagolnik(n); 
+}

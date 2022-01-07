@@ -1,0 +1,32 @@
+#include <stdio.h>
+//long int deka eden od broevite vo primerite e dolgometrazhen
+long int rekurzivnaK(int k, long int n){
+    if (n == 0)
+        return 0;
+    else if ((n % 10) > k){
+        printf("%ld", n % 10); //prvo ja printash cifrata dokolku e > k
+        return n%10+rekurzivnaK(k, (n/10)); //i povtorno ja povikuvash rekurzivnata za zbirot
+    }
+    return rekurzivnaK(k, (n/10));
+//fakticki cela rekurzivna go bara zbirot na tie cifri ama vo megjuvreme gi printa istite
+}
+
+long int obratenBroj (long int broj){ //najdi mu obraten na brojot deka rekurzivnata pochnuva od pozadi
+    int long obraten = 0;
+    while(broj){
+        obraten = obraten * 10 + broj%10;
+        broj/=10;
+    }
+    return obraten;
+}
+int main(){
+    int n, k;
+    long int broj;
+    scanf("%d", &k);
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        scanf("%ld", &broj);
+        printf(" : %d\n", rekurzivnaK(k, obratenBroj(broj))); // povikuvash rekurzivna na obratniot broj!
+    }
+    return 0;
+}

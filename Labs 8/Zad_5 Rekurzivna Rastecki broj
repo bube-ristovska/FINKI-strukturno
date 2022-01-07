@@ -1,0 +1,24 @@
+#include <stdio.h>
+//12345 e rastecki
+//12325 ne e rastecki
+int rasteckiBroj(int n){
+    if (n == 0) return 1; //dokolku e 0 nema da go ispolnuva uslovot zatoa poseben stop uslov za 0
+    if (n <= 89 && (n%10 > (n/10)%10)) return 1; //dokolku stigne do prvite dve cifri proveri dali prethodnata i pogolema od slednata
+    else if ((n%10) > (n/10)%10){
+        return rasteckiBroj(n/10);
+    }
+    else return 0;
+
+
+}
+int main(){
+    int n, broj;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++){
+        scanf("%d", &broj);
+        if(rasteckiBroj(broj)) printf("DA\n"); //Da ako e rastecki
+        else printf("NE\n");
+    }
+
+    return 0;
+}

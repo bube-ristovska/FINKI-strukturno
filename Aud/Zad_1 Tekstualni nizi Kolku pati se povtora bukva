@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+int repetition(char *a, char bukva){
+    int vkupno = 0;
+    while(*a != '\0'){ //null terminator
+        if(*a == bukva){
+         vkupno++;
+        }
+        a++;
+    }
+    return vkupno;
+}
+int main () {
+   char a[MAX], bukva;
+    gets(a); //vnesuvanje na tekstualna niza
+    bukva = getchar(); //vnesuvanje na bukva
+
+    printf("Znakot go ima %d pati", repetition(a, bukva));
+
+    return 0;
+}

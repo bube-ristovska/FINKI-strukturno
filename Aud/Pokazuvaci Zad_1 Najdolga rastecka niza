@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+//2 3 1 4 7 12 7 9 1
+//0 1 2 3 4 5  6 7 8
+//Najdolga niza indeks: 2 dolzina:4
+void rastecka(int* array, int n, int* poc, int* dol){ //direkna promena na promenlivite
+    int pocetok, dolzina;
+    *poc = 0;
+    *dol = 1;
+    for(int i = 0; i < n-1; i++){
+        pocetok = i;
+        dolzina = 1;
+       while( *(array + i) < *(array + i+1)){
+        dolzina++;
+        i++;
+        if(i == n-1) break;
+       }
+       if(dolzina > *dol){
+            *dol = dolzina;
+            *poc = pocetok;
+       }
+    }
+}
+int main () {
+   int niza[MAX];
+   int n, poc, dol;
+   scanf("%d", &n);
+   for(int i = 0; i < n; i++){
+        scanf("%d", &niza[i]);
+
+   }
+   rastecka(niza, n, &poc, &dol);
+   printf("%d %d", poc, dol);
+
+    return 0;
+}

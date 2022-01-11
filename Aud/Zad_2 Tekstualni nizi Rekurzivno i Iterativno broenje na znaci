@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+/*int dolzinaI(char *a){ //iterativno broenje na bukvi
+    int brojac = 0;
+    while(*a != '\0'){
+        brojac++;
+        a++;
+    }
+    return brojac;
+}*/
+int dolzinaR(char *a){ //rekurzivno broenje na bukvi
+    if(*a == '\0') reurn 0;
+    return 1 + dolzinaR(a+1);
+}
+
+int main () {
+   char a[MAX];
+   gets(a);
+  printf("%d", dolzinaR(a));
+
+    return 0;
+}

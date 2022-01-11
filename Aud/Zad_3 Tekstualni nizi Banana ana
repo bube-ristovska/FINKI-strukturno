@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+//banana0
+//0123456->
+//poz 3 dolz 4 nana
+
+void podniza(char *a, int poz, int dol){
+    char b[MAX];
+    int n = 0;
+    for(int i = poz-1; i <= dol+1; i++){
+        b[n++] = *(a+i);
+      }
+    puts(b);
+}
+
+int main () {
+    int poz, dol;
+   char a[MAX];
+   gets(a);
+   scanf("%d %d", &poz, &dol);
+   podniza(a, poz, dol);
+
+    return 0;
+}

@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 1001 //1001 e za null operatorot
+int letterFrequency (char * text, char letter){
+    int br = 0;
+    while(*text !='\0'){
+        if(*text == letter) br++;
+        text++;
+    }
+    return br;
+}
+int main () {
+    char a[MAX], bukva, ch;
+    float brBukvi=1.000;
+    int i = 0;
+    while((i < MAX-1)  && (ch = getchar()) != '\n'){ //zemanje na bukvi do 1000 znaci
+    a[i++] = ch;
+    brBukvi++;
+    }
+    a[i] = '\0';
+    bukva = getchar();
+    if(bukva >= 'a' && bukva <= 'z'){ //dokolku prvo se vnese mala bukva
+    printf("%c -> %.3f%%\n", bukva, (letterFrequency(a, bukva)/brBukvi)*100);
+    printf("%c -> %.3f%%", toupper(bukva), (letterFrequency(a, toupper(bukva))/brBukvi)*100);
+    }
+    else{
+    printf("%c -> %.3f%%\n", tolower(bukva), (letterFrequency(a, tolower(bukva))/brBukvi)*100);
+    printf("%c -> %.3f%%", toupper(bukva), (letterFrequency(a, toupper(bukva))/brBukvi)*100);
+    }
+    return 0;
+}

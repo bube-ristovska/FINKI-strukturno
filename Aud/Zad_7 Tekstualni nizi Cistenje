@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+//PAZI NULL TERMINATOR KAKO PISHUESH
+void cistenje(char *a){
+    int i=0, j=0;
+    while(a[i] != '\0'){
+        if(isalpha(a[i])){
+            if(a[i]>='a' && a[i]<='z'){
+                a[j] = toupper(a[i]);
+            }
+            else if(a[i]>='A' && a[i]<='Z'){
+                a[j] = tolower(a[i]);
+            }
+            j++;
+        }
+      i++;
+    }
+    a[j] = '\0';
+}
+
+
+int main () {
+    char a[MAX];
+    gets(a);
+    cistenje(a);
+    printf("%s", a);
+return 0;
+}

@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+
+//A NA!
+//ana
+
+void cistenje(char *a, char *b)
+{
+    int m = 0, i=0;
+    while(a[i]!='\0'){
+        if(isupper(a[i])){
+            b[m] = tolower(a[i]);
+            m++;
+        }
+        else if(islower(a[i])){
+            b[m] = a[i];
+            m++;
+        }
+    i++;
+    }
+    b[m] = '\0';
+}
+
+int palindromR(char *a, int poc, int kraj){
+    if(poc >= kraj) return 1;
+    if(*(a+poc) == *(a+kraj)) return palindromR(a, poc+1, kraj -1);
+    return 0;
+
+}
+
+int main () {
+    char a[MAX], b[MAX], p;
+    gets(a);
+    cistenje(a, b);
+    printf("%s",b);
+    p = palindromR(b, 0, strlen(b)-1);
+    if(p) printf(" e palindrom");
+    else printf(" ne e palindrom");
+
+return 0;
+}

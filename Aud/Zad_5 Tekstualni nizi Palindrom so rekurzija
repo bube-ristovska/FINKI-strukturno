@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+//dovod
+//01234 vk 5
+//0 i 4; 1 i 3
+int palindrom(char *a){
+    int n = strlen(a);
+    if(n%2==0) return 0; //dokolku e parna nizata ne e palindrom
+    for(int i = 0; i < n/2; i++){
+        if(*(a+i)== *(a+n-1-i))return 1; //ogledalni elem gi proveruva
+    }
+    return 0;
+}
+int palindromR(char *a, int poc, int kraj){ //rekurzivna za palindrom
+    if(poc >= kraj) return 1; //koga pocetokot kje bide ednakov so krajot znachi na srede se
+    if(*(a+poc) == *(a+kraj))
+        return palindromR(a, poc+1, kraj-1);
+    return 0;
+}
+
+int main () {
+    char a[MAX];
+    gets(a);
+    if(palindromR(a, 0, strlen(a)-1)) printf("PALINDROM");
+    else printf("NE E PALINDROM");
+
+    return 0;
+}

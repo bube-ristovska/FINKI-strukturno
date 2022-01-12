@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+
+//super lozinka mora da ima bar edna bukva i broj i znak
+
+int LOZINKA(char *a){
+    int brBukva=0, brCif=0, brZnak=0;
+    for(int i = 0; i < strlen(a); i++){
+        if(isalpha(*(a+i))) brBukva++;
+        else if(isdigit(*(a+i))) brCif++;
+        else brZnak++;
+    }
+    if(brBukva>0 && brCif>0 && brZnak>0) return 1;
+    return 0;
+}
+
+int main () {
+    char lozinka[MAX];
+    gets(lozinka);
+    if(LOZINKA(lozinka)){
+        printf("Super lozinka");
+    }
+    else printf("Ne super lozinka");
+
+
+    return 0;
+}

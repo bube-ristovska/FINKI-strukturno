@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+int podniza(char *a, char *b){
+   int d1 = strlen(a), d2 = strlen(b);
+   if(d1 > d2) return 0; //ako prvata niza e pogolema od vtorata ne mozhe da e nejzina podniza
+   for(int i = 0; i < d2-d1; i++){
+    if(strncmp(a, b+i, d1)==0) return 1; //koja niza e sporedena so koja za kolku mesta i ako e tocno 0 vrakja
+   }
+   return 0;
+}
+int main () {
+    char a[MAX], b[MAX];
+    gets(a);
+    gets(b);
+    if(podniza(a,b)) printf("E podniza");
+    else printf("Ne e podniza");
+    return 0;
+}

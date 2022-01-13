@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+void writeToFile() {
+    FILE *f = fopen("text.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    writeToFile();
+    
+    FILE *text;
+    if((text = fopen("text.txt", "r")) == NULL){
+        printf("Error");
+        return -1;
+    }
+    
+    char c;
+    int brG = 0, brM = 0, brB=0;
+    while((c = fgetc(text)) != EOF){ //bukva po bukva se zema
+        if(isalpha(c)){
+            brB++;
+            if(isupper(c)) brG++;
+            else if(islower(c)) brM++;
+        }
+    }
+    printf("%.4f\n%.4f",(float)brG/brB,(float)brM/brB);
+    
+    fclose(text);
+    
+    
+}

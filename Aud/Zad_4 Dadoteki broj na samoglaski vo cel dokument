@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+int e_samoglaska(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+int main() {
+    int red = 0, vkupno = 0;
+    FILE *dat; char c;
+    if ((dat = fopen("SP_primer.txt", "r")) == NULL) {
+        printf("Datotekata SP_primer.txt ne se otvora");
+        exit(-1);
+    }
+    int samoglaski = 0;
+    while ((c = fgetc(dat)) != EOF) { //zemi gi bukva po bukva do kraj na fajlot 
+        if(e_samoglaska(tolower(c))) { proveri so funkcija dali malata bukva e samoglaska
+            samoglaski++; //zgolemi br na samoglaski
+            vkupno++; //zgolemi br na vkupno
+        }
+        if (c == '\n') { //koga kje dojdesh do nov red proveri dali tie do sega se povekje od 10
+            if (samoglaski > 10) {
+                red++;
+            }
+            samoglaski = 0; //resetiraj go brojachot za samoglaski na red
+        }
+    }
+    if (samoglaski > 10) { //proveri za posledniot red posebno
+            red++;
+    }
+    printf("Vkupno %d reda imaat povekje od 10 samoglaski\n", red);
+    printf("Vo datotekata ima vkupno %d samoglaski.\n", vkupno);
+    return 0;
+}

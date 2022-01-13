@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include<ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 100
+
+int main(){
+    FILE *text;
+    if((text =fopen("text.txt","r")) == NULL){ //se otvara so poraka za error somehow
+        printf("Error");
+        return -1;
+    }
+
+    char c;
+    int brSamoglaski=0, brSoglaski=0;
+    while((c = fgetc(text)) != EOF){  //pazi na zagradete
+        if(isalpha(c)){
+            c = tolower(c);
+            if(c == 'a' ||c == 'e' ||c == 'i' ||c == 'o' ||c == 'u')
+                brSamoglaski++;
+            else
+                brSoglaski++;
+        }
+    }
+
+    printf("Odnos samoglaski/soglaski: %d / %d = %.2f", brSamoglaski, brSoglaski, (float)brSamoglaski/brSoglaski);
+    fclose(text);
+
+}

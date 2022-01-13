@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include<ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 100
+
+int main(){
+    FILE *matrica1, *matrica2;
+
+    if((matrica1 = fopen("matrica1.txt", "r")) == NULL){
+        printf("Error1");
+        return -1;
+    }
+    if((matrica2 = fopen("matrica2.txt", "w")) == NULL){
+        printf("Error2");
+        return -1;
+    }
+    int m, n;
+    float matrica[MAX][MAX];
+    fscanf(matrica1, "%d %d", &m, &n); //zemi gi m i n
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            fscanf(matrica1, "%f", &matrica[i][j]); //zemi float vrednosti od matrica1 i smesti gi u matrica na ovaa programa
+        }
+    }
+    //sega del od kodot za smestuvanje na elementite vo matrica2.txt
+    //deka se transponira m stanuva n i naopaku j i i treba da se
+    fprintf(matrica2, "%d %d\n", n, m);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            fprintf(matrica2, "%.1f \n", matrica[j][i]);
+        }
+    }
+    //zatvoraj dadoteke
+    fclose(matrica1);
+    fclose(matrica2);
+
+}

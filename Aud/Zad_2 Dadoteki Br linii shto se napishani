@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include<ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 100
+
+int main(){
+   FILE *vlezna, *izlezna;
+   //otvori gi dvete
+   if((vlezna = fopen("vlezna.txt", "r")) == NULL){
+      printf("Error1");
+      return -1;
+      }
+    if((izlezna = fopen("izlezna.txt", "w")) == NULL){
+        printf("Error2");
+        return -1;
+    }
+    char string[80];
+    int l;
+    while((fgets(string, 81, vlezna)) != NULL){ //zemi go stringot do kraj na linijata
+        l = strlen(string);
+        fprintf(izlezna, "%d\n%s", l, string); //i brojot i stringot vo edno se printaat
+    }
+    fclose(vlezna);
+    fclose(izlezna);
+
+
+
+}

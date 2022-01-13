@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+double max(double * niza, int n)
+{
+    float *n1=(float*)niza;
+    float maks=0;
+
+    for (int i= 0; i<n; i++)
+    {
+
+        if(maks<*(n1+i))
+            maks=*(n1+i);
+    }
+
+    return maks;
+}
+
+double min (double * niza, int n)
+{
+    float *n1=(float*)niza;
+    float min=*niza;
+
+    for (int i= 0; i<n; i++)
+    {
+
+        if(min>*(n1+i))
+            min=*(n1+i);
+    }
+
+    return min;
+}
+
+void normalize (double * niza, int n)
+{
+    float *n1=(float*)niza;
+    float MIN = min(niza, n), MAX = max(niza, n);
+    for(int i = 0; i < n; i++){
+     *(n1+i) = (*(n1+i)-MIN) / (MAX-MIN);
+    }
+}
+
+
+
+int main () {
+
+    float niza [200];
+    int i,n;
+
+    scanf("%d", &n);
+
+    for (i=0;i<n;i++) {
+        scanf("%f", &niza[i]);
+
+    }
+
+   printf("MAX -> %.3f\n", max(niza,n));
+   printf("MIN -> %.3f\n", min(niza,n));
+
+    normalize(niza,n);
+    
+
+     for (i=0;i<n;i++) {
+        printf("%.3lf ", niza[i]);
+
+    }
+
+    return 0;
+}

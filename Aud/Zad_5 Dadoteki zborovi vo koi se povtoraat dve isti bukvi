@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include<ctype.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX 100
+int povtoruvanjeBukva(char *array){
+    char *array2; //dva pokazhuvacha kon ista niza
+    int isti;
+    while(*array != '\0'){
+        array2 = array+1; //pokazhuva kon vtoriot element
+        isti = 1;
+        while(*array2 != '\0'){
+            if(tolower(*array) == tolower(*array2)) isti++;
+            array2++; //prviot so svite
+        }
+        if(isti > 2) return 1;
+        array++;
+    }
+    return 0;
+}
+int main(){
+    FILE *zborovi;
+
+    if((zborovi = fopen("zborovi.txt","r")) == NULL){
+        printf("Error");
+        return -1;
+    }
+    char zbor[21];
+    int brojacNaZborovi=0;
+    while((fgets(zbor, 21, zborovi)) != NULL){
+        if(povtoruvanjeBukva(zbor)){
+            puts(zbor);
+            brojacNaZborovi++;
+        }
+    }
+    printf("Vkupno %d takvi zborovi", brojacNaZborovi);
+
+    fclose(zborovi);
+    return 0;
+}

@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+
+void writeToFile() {
+  FILE *f = fopen("text.txt", "w");
+  char c;
+  while((c = getchar()) != '#') {
+    fputc(c, f);
+  }
+  fclose(f);
+}
+//kod za samoglaska
+int isSamoglaska(char c){
+    return (c == 'a' || c == 'e' ||c == 'i' ||c == 'o' ||c == 'u');
+
+}
+
+int main() {
+    
+  writeToFile();
+   
+      FILE *text; 
+    
+    if((text = fopen("text.txt", "r")) == NULL){
+        printf("Error"); return -1;
+    }
+    
+    int br = 0;
+    char c, temp = 'm'; //prviot temp staj go kako bukvata m cuz why not hahhahaha pls sakam 10ka
+    while((c = fgetc(text)) != EOF){
+        if(isalpha(c) && isalpha(temp)){
+            if(isSamoglaska(tolower(c)) && isSamoglaska(tolower(temp))){
+                br++;
+                printf("%c%c\n", tolower(temp),tolower(c));
+            }
+        }
+        temp = tolower(c);
+    }
+    printf("%d", br);
+    fclose(text);
+    
+
+  return 0;
+}

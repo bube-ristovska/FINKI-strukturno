@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+int maxCifra(int broj,int max){
+    if(broj == 0) return max;
+    if(broj%10 > max) return maxCifra(broj/10,broj%10);
+    return maxCifra(broj/10, max);
+}
+int main() {
+    int broj, n;
+    while(scanf("%d", &broj)){
+        n = maxCifra(broj/10, broj%10);
+        printf("%d\n", n);
+    }
+
+}

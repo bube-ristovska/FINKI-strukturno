@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+
+
+int main(){
+    int n;
+    float a[MAX][MAX];
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            scanf("%f", &a[i][j]);
+        }
+    }
+    //zbirovite
+    float x=0, y=0; //x pod glavna y pod sporedna
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(j < i) x+=a[i][j]; //pod glavna 
+            if(i + j >= n) y+=a[i][j]; //pod sporedna
+        }
+    }
+    //smestuvanje na glavna i sporedna i inicijalizacija na site dr na 0
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(i == j) a[i][j] = x; //glavna dijagonala
+            else if(i == n-1-j) a[i][j] = y; //sporedna dijagonala
+            else a[i][j] = 0;
+            if(n%2){a[n/2][n/2] = x+y; }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            printf("%.1f ", a[i][j]);
+        }
+        printf("\n");
+    }
+    
+    
+    return 0;
+}

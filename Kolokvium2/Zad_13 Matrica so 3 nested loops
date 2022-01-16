@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+
+int main(){
+    int a[MAX][MAX], x, m, n;
+    scanf("%d", &x);
+    scanf("%d %d", &m, &n);
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    int s = 0, i, j;
+    for(i = 0; i < m; i++){
+        for(j = 0; j < n; j++){
+            s+= a[i][j];
+        }
+        for(int k = 0; k < j; k++){ //k fakticki e novata j za kolonete
+             if(s > x){ a[i][k] = 1; }
+              else if(s < x) { a[i][k] = -1; }
+              else if(s == x){ a[i][k] = 0; }
+        }
+        s = 0;
+    }
+
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+}

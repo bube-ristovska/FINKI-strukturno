@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+// ne menuvaj ovde
+void wf() {
+    FILE *f = fopen("livce.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    wf();
+	   FILE *livce;
+    if((livce = fopen("livce.txt", "r")) == NULL){
+        printf("Error"); return -1;
+    }
+    
+    int suma, tip, tempTip; 
+    double koeficient, maxKoef = 0;
+    char sifra[10], tempSifra[10];
+    double sumaKoef = 1;
+    fscanf(livce, "%d", &suma);
+    while(fscanf(livce, "%s", sifra) != EOF){
+        fscanf(livce,"%d %lf", &tip, &koeficient);
+        sumaKoef*= koeficient;
+        if(koeficient > maxKoef){
+            maxKoef = koeficient;
+            tempTip = tip;
+            strcpy(tempSifra, sifra);
+        }
+    }
+    printf("%s %d %.2f\n", tempSifra, tempTip, maxKoef);
+    printf("%.2f", sumaKoef*suma);
+    fclose(livce);
+
+	return 0;    
+
+}

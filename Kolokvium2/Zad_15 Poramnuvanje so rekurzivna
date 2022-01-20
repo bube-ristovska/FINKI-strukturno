@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 100
+void bubbleSort(int *a, int n){
+    int temp;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n-i-1; j++){
+            if(*(a+j) > *(a+j+1)){
+                temp = *(a+j);
+                *(a+j) = *(a+j+1);
+                *(a+j+1) = temp;
+            }
+        }
+    }
+
+}
+int poramnet(int a){
+    if(a == 0) return 0;
+    if(a%10 == 9) return poramnet(a/10)*10+7;
+    else return poramnet(a/10)*10+(a%10);
+
+}
+
+int main(){
+    int n, br = 0;
+    int poramneti[MAX];
+    for(int i = 0; scanf("%d", &n); i++){
+        poramneti[i] = poramnet(n);
+        br++;
+    }
+    bubbleSort(poramneti, br);
+    if(br < 5){
+        for(int s = 0; s < br; s++){
+        printf("%d ", poramneti[s]);
+    }
+    }
+    else{
+       for(int s = 0; s < 5; s++){
+        printf("%d ", poramneti[s]);
+    }
+    }
+
+}

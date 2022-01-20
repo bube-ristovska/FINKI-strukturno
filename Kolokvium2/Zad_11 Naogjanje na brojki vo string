@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+void wtf() {
+    FILE *f = fopen("input.txt", "w");
+    char c;
+    while((c = getchar()) != EOF) {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+//ovde func
+void bubbleSort(int *a, int n){
+    int temp;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n-i-1; j++){
+            if(*(a+j) > *(a+j+1)){
+             temp = *(a+j);
+            *(a+j) = *(a+j+1);
+            *(a+j+1) = temp; 
+            }
+        }
+    }
+
+}
+
+int main() {
+    wtf();
+   //ovde
+       FILE *input;
+    if((input = fopen("input.txt", "r")) == NULL){
+        printf("ERROR"); return -1;
+    }
+
+    int br = 0, j = 0;
+    char array[MAX];
+    int tempArray[MAX];
+    while((fgets(array, 100, input)) != NULL){
+            
+            for(int i = 0; array[i] != '\n'; i++){
+                if(array[i] >= '0' && array[i] <='9'){
+                    br++;
+                    tempArray[j++] = array[i] - '0';
+                }
+            }
+                 bubbleSort(tempArray, br);
+                
+                printf("%d:", br);
+                for(int m = 0; m < br; m++){
+                    printf("%d", tempArray[m]);
+                }
+                printf("\n"); 
+                br = 0; j = 0;
+    }
+    fclose(input); //ovde
+    return 0;
+}

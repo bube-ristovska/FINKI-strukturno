@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#define MAX 100
+
+//n e redici m e koloni shto e n*2
+//za printanje n e koloni a redici sa n*2
+
+int main(){
+    int n;
+    int matrica[MAX][MAX];
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n*2; j++){
+            scanf("%d", &matrica[i][j]);
+        }
+    }
+    int a[MAX][MAX];
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n*2; j++){
+            if(j >= n){
+                a[i + n][j - n] = matrica[i][j];
+            }
+            else{
+                a[i][j] = matrica[i][j];
+            }
+        }
+    }
+     for(int i = 0; i < n*2; i++){
+        for(int j = 0; j < n; j++){
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    
+
+    return 0;
+
+}

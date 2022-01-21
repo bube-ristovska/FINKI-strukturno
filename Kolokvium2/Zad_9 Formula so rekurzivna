@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 100
+
+int samotoN;
+
+float formula(int a[], int n){
+    if(n == samotoN-1) return a[n];
+    return (float)a[n] + (float)1/(float)formula(a, n+1);
+
+}
+
+int main(){
+    int a[MAX], n;
+    scanf("%d", &n);
+    samotoN = n;
+    for(int i = 0; i < n; i++){
+        scanf("%d", &a[i]);
+    }
+    printf("%f", formula(a, 0));
+
+}

@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include<string.h>
+#include<ctype.h>
+#define MAX 81
+//some shit da se otvori dadotekata
+void wtf() {
+    FILE *f = fopen("podatoci.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+//dont touch
+
+int indexOdKade(char array[], char z){
+    for(int i = 0; i < strlen(array); i++){
+        if(array[i] == z) return i;
+    }
+    return 0;
+}
+int indexDoKade(char array[], char z){
+    for(int i = 0; i < strlen(array); i++){
+        if(array[i] == z) return i;
+    }
+    return 0;
+}
+
+
+int main() {
+    wtf();
+	
+    FILE *podatoci;
+    if((podatoci = fopen("podatoci.txt", "r")) == NULL){
+        printf("ERROR"); return -1;
+    }
+    
+    char z1, z2, array[MAX];
+    //scanf("\n%c %c", &z1, &z2); vaka e deka praznoto mesto ne go prifakja
+    z1 = getchar();
+    z1 = getchar();
+    z2 = getchar();
+    int from, to;
+    while((fgets(array, 80, podatoci)) != NULL){
+        for(int i = 0; array[i] != '\n'; i++){
+            from = indexOdKade(array, z1)+1;
+            to = indexDoKade(array, z2);
+        }
+            for(;from < to; from++){
+                printf("%c", array[from]);
+            }
+            printf("\n");
+    }
+    fclose(podatoci);
+    return 0;
+}
